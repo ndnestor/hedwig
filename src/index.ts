@@ -12,6 +12,7 @@ const TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER; // your Twilio phon
 
 // send endpoint
 app.post('/send', (req: Request, res: Response) => {
+    console.log('Sending message...')
     const { token, message, phone } = req.body;
     if (!isValidToken(token)) {
         return res.status(401).send('Unauthorized');
@@ -28,6 +29,7 @@ app.post('/send', (req: Request, res: Response) => {
 
 // receive endpoint
 app.get('/receive', (req: Request, res: Response) => {
+    console.log('Retrieving messages...')
     const { token } = req.body;
     if (!isValidToken(token)) {
         return res.status(401).send('Unauthorized');

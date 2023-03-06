@@ -1,6 +1,6 @@
 # Hedwig
 
-Hedwig is a simple web application that allows users to send SMS messages using Twilio. It is built using Node.js, TypeScript, and Docker.
+Hedwig is a simple web application that allows users to send SMS messages using Twilio via a RESTful API. It is built using Node.js, TypeScript, and Docker.
 
 ## Prerequisites
 
@@ -16,8 +16,8 @@ You will also need a Twilio account and an SMS-capable phone number. You can sig
 
 To build and run Hedwig, follow these steps:
 
-1. Clone this repository to your local machine. 
-2. Navigate to the cloned repository's root directory. 
+1. Clone this repository to your local machine.
+2. Navigate to the cloned repository's root directory.
 3. Create a .env file in the root directory with the following contents:
 
 ```
@@ -84,4 +84,4 @@ If you find a bug or would like to suggest a feature, feel free to open an issue
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more information.
+This project is licensed under the MPL-2.0 License. See [the specifications](https://www.mozilla.org/en-US/MPL/2.0/) for more information.

@@ -28,7 +28,7 @@ app.post('/send', (req: Request, res: Response) => {
 
 // receive endpoint
 app.get('/receive', (req: Request, res: Response) => {
-    const token = req.query.token.toString();
+    const { token } = req.body;
     if (!isValidToken(token)) {
         return res.status(401).send('Unauthorized');
     }

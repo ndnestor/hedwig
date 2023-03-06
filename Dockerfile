@@ -10,19 +10,18 @@ WORKDIR /app
 
 # Install app dependencies
 COPY package.json package-lock.json ./
-RUN npm install --production
+RUN if [ "$ENVIRONMENT" = "production" ]; then \
+        npm install --production; \
+    else \
+        npm install; \
+    fi
 
 # Bundle app source
-COPY src ./src
-
-# Compile TypeScript files
 COPY tsconfig.json ./
-RUN npm run build
-
-# Bundle the remaining app source
 COPY whitelist.csv ./
-COPY scripts ./scripts
 COPY .env ./
+COPY scripts ./scripts
+COPY src ./src
 
 # Start the app
 CMD ["/bin/bash", "./scripts/deploy.sh"]

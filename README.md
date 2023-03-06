@@ -8,6 +8,7 @@ Before building and running this application, you will need to have the followin
 
 - Docker
 - Node.js (version 14 or higher)
+- npm package manager
 
 You will also need a Twilio account and an SMS-capable phone number. You can sign up for a free Twilio account at https://www.twilio.com/try-twilio.
 

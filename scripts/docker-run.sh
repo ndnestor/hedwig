@@ -1,21 +1,18 @@
 #!/bin/bash
 
-# Build Typescript
-npm run build
-
 # Set environment variables
-export IMAGE_NAME=my-node-app
-export CONTAINER_NAME=my-node-app-container
+export IMAGE_NAME=hedwig
+export CONTAINER_NAME=hedwig
 
 # Build Docker image
 docker build -t $IMAGE_NAME .
 
-# Check if container is already running
-RUNNING=$(docker inspect --format="{{ .State.Running }}" $CONTAINER_NAME 2> /dev/null)
-
-# If container is not running, start it
-if [ $? -eq 1 ] || [ "$RUNNING" == "false" ]; then
-  docker run --name $CONTAINER_NAME -p 8080:8080 -d $IMAGE_NAME
-else
-  docker restart $CONTAINER_NAME
+# If container already exists, delete it
+if [ "$(docker ps -a | grep $CONTAINER_NAME)" ]; then
+  # Stop and remove the container
+  docker stop $CONTAINER_NAME
+  docker rm $CONTAINER_NAME
 fi
+
+# Create and run Docker container
+docker run --name $CONTAINER_NAME -p 8080:8080 -d $IMAGE_NAME

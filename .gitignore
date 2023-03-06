@@ -9,6 +9,9 @@ dist/
 .env
 whitelist.csv
 
+# Ignore test HTTP requests
+*.http
+
 ###
 
 # Created by https://www.toptal.com/developers/gitignore/api/webstorm
